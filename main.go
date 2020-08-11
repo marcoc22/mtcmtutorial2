@@ -27,5 +27,11 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 
 func main() {
 	http.HandleFunc("/book/", handler)
-	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+	p := os.Getenv("PORT")
+  	if p != "" {
+    		p = ":" + p
+	}else{
+		p = ":3000"
+	}
+	http.ListenAndServe(p, nil)
 }
