@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	"os"
 )
 
 func handler(writer http.ResponseWriter, request *http.Request) {
@@ -27,11 +26,5 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 
 func main() {
 	http.HandleFunc("/book/", handler)
-	p := os.Getenv("PORT")
-  	if p != "" {
-    		p = ":" + p
-	}else{
-		p = ":3000"
-	}
-	http.ListenAndServe(p, nil)
+	http.ListenAndServe(":8080", nil)
 }
